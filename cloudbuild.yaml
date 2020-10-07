@@ -11,7 +11,7 @@ steps:
   args: [
    'build', 
    '-t', 
-   'gcr.io/$PROJECT_ID/my-app-vue',
+   'gcr.io/$PROJECT_ID/my-app-vue:$TAG_NAME',
    '.'
   ]
   dir: 'my-app-vue'
