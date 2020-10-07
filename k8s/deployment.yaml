@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: my-app-vue
+  name: my-app-vue
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: my-app-vue
+  template:
+    metadata:
+      labels:
+        run: my-app-vue
+    spec:
+      containers:
+      - image: gcr.io/maxim-ci-cd-pipeline/my-app-vue:latest
+        name: my-app-vue
+        ports:
+        - containerPort: 8000
