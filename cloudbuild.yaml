@@ -27,8 +27,8 @@ steps:
    'set', 
    'image', 
    'deployment', 
-   '<app-name>', 
-   '<app-name>=gcr.io/$PROJECT_ID/my-app-vue:$TAG_NAME'
+   'my-app-vue', 
+   'my-app-vue=gcr.io/$PROJECT_ID/my-app-vue:$TAG_NAME'
   ]
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-d'
