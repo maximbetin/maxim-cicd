@@ -11,8 +11,6 @@ steps:
   args: [
    'build', 
    '-t', 
-   'gcr.io/$PROJECT_ID/my-app-vue:$BRANCH_NAME-$COMMIT_SHA',
-   '-t', 
    'gcr.io/$PROJECT_ID/my-app-vue:latest',
    '.'
   ]
