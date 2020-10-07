@@ -20,7 +20,7 @@ steps:
   args: ['apply', '-f', 'k8s/']
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-d'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=gke-my-vue-app'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=gke-my-app-vue'
 #step 4
 - name: 'gcr.io/cloud-builders/kubectl'
   args: [
@@ -32,7 +32,7 @@ steps:
   ]
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-d'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=gke-my-vue-app'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=gke-my-app-vue'
 # push images to Google Container Registry with tags
 images: [
    'gcr.io/$PROJECT_ID/my-app-vue:latest'
