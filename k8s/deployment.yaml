@@ -18,4 +18,4 @@ spec:
       - image: gcr.io/maxim-ci-cd-pipeline/my-app-vue:latest
         name: my-app-vue
         ports:
-        - containerPort: 8000
+        - containerPort: 8080
