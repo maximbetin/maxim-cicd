@@ -11,7 +11,7 @@ steps:
   args: [
    'build', 
    '-t', 
-   'gcr.io/$PROJECT_ID/my-app-vue:latest',
+   'gcr.io/$PROJECT_ID/my-app-vue',
    '.'
   ]
 #step 3
