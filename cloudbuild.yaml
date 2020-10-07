@@ -11,7 +11,7 @@ steps:
   args: [
    'build', 
    '-t', 
-   'gcr.io/$PROJECT_ID/my-app-vue:$TAG_NAME',
+   'gcr.io/$PROJECT_ID/my-app-vue:latest',
    '.'
   ]
   dir: 'my-app-vue'
@@ -28,13 +28,12 @@ steps:
    'image', 
    'deployment', 
    'my-app-vue', 
-   'my-app-vue=gcr.io/$PROJECT_ID/my-app-vue:$TAG_NAME'
+   'my-app-vue=gcr.io/$PROJECT_ID/my-app-vue:latest'
   ]
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-d'
   - 'CLOUDSDK_CONTAINER_CLUSTER=gke-my-vue-app'
 # push images to Google Container Registry with tags
 images: [
-   'gcr.io/$PROJECT_ID/my-app-vue:$TAG_NAME',
    'gcr.io/$PROJECT_ID/my-app-vue:latest'
   ]
