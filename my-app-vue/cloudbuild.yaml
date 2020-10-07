@@ -14,6 +14,7 @@ steps:
    'gcr.io/$PROJECT_ID/my-app-vue',
    '.'
   ]
+  dir: 'maxim-cicd/my-app-vue'
 #step 3
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply', '-f', 'k8s/']
