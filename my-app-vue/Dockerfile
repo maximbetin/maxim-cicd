@@ -1,9 +1,6 @@
 # Get a base Node image
 FROM node:alpine
 
-# Install a simple http-server for serving static content
-RUN npm install -g http-server
-
 # Make the 'app' folder the current working directory
 WORKDIR /app
 
@@ -19,5 +16,5 @@ COPY . .
 # Build app for production with minification
 RUN npm run build
 
-EXPOSE 8080
-CMD [ "http-server", "dist" ]
+# Runs the website on http://localhost:80
+CMD ["npm", "run", "serve"]
