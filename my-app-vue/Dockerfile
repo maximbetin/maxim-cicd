@@ -1,21 +1,22 @@
+# Get a base Node image
 FROM node:alpine
 
-# install simple http server for serving static content
+# Install a simple http-server for serving static content
 RUN npm install -g http-server
 
-# make the 'app' folder the current working directory
+# Make the 'app' folder the current working directory
 WORKDIR /app
 
-# copy both 'package.json' and 'package-lock.json' (if available)
+# Copy both 'package.json' and 'package-lock.json' (if present)
 COPY package*.json ./
 
-# install project dependencies
+# Install project dependencies
 RUN npm install
 
-# copy project files and folders to the current working directory (i.e. 'app' folder)
+# Copy project files and folders to the current working directory (i.e. 'app' folder)
 COPY . .
 
-# build app for production with minification
+# Build app for production with minification
 RUN npm run build
 
 EXPOSE 8080
