@@ -16,5 +16,5 @@ COPY . .
 # Build app for production with minification
 RUN npm run build
 
-# Runs the website on http://localhost:80
+# Runs the website on http://localhost:8080
 CMD ["npm", "run", "serve"]
