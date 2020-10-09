@@ -34,6 +34,6 @@ steps:
   - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-d'
   - 'CLOUDSDK_CONTAINER_CLUSTER=gke-my-app-vue'
   # Push the image to Google Container Registry with the latest tag
-- images: [
+images: [
    'gcr.io/$PROJECT_ID/my-app-vue:latest'
   ]
