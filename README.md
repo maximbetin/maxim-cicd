@@ -33,7 +33,7 @@ Let’s start off by tackling the non-cloud related tools. Back in the day, I de
 But enough small talk. Open up a Terminal in your Linux distro and run these commands:
 
 1. `sudo npm install -g @vue/cli` to install `vue`.
-2. `sudo vue create my-vue-app` to create a preset website in Vue.js. You might get prompted to select a Vue version, I will use `Vue 2`.
+2. `sudo vue create my-app-vue` to create a preset website in Vue.js. You might get prompted to select a Vue version, I will use `Vue 2`.
 3. Oh wait, that’s it. Done. Yes, you’ve got yourself a website template after running a grand total of two Linux commands. **Success**.
 
 Side-note: if you come across a `npm ERR! code EINTEGRITY` error during the installation run `sudo npm cache verify`, it usually fixes it.
