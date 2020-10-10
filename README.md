@@ -86,7 +86,7 @@ One advantage of using a CI/CD pipeline is that we don’t have to do the 4 prev
 On the other hand, The CI (Continuous Integration) part of the pipeline integrates the code, it performs the necessary static and dynamic tests and verifies the code integrity. In this way we can automate the deployment of new Docker images and abstract the process of deployment from the developer, whose main focus will be on code-related tasks. I’m going to omit running tests in the pipeline as that would imply me having to write them, which would be rather cumbersome to demonstrate a simple use-case of a CI/CD pipeline, but bear in mind that different types of tests are indeed run in it. Unit tests are usually in CD and integration tests in CI among others.
 
 ## 4 Creating the Google Cloud Platform environment
-### Initial setup
+### 4.1 Initial setup
 
 Now here is where [Google Cloud Platform](https://cloud.google.com/) comes into play. All the Docker images that we upload will be stored in Google’s Container Registry and rolled out to a Google Kubernetes Engine cluster. But let’s not get ahead of ourselves, first, we need to set up a new Google Cloud Platform project for this demo. If you have a spare one you can use lying around, feel free to use it instead. These are the commands you need to run in order to create one:
 
@@ -105,7 +105,7 @@ At this point the project is ready. The previous `gcloud` commands are a one-tim
 
 Frankly, if you’re going to create multiple projects that use multiple services that’s where [Terraform](https://www.terraform.io/) or Google’s [Deployment Manager](https://cloud.google.com/deployment-manager) would come in handy, but that’s a story for another time. 
 
-### Creating a Google Kubernetes Engine cluster
+### 4.2 Creating a Google Kubernetes Engine cluster
 
 We can now get our hands dirtier and start by creating the services we will be using here.
 
@@ -174,9 +174,9 @@ We could have actually defined both the Deployment and the Service in one single
 
 We also could apply this configuration on the GKE cluster with [`kubectl apply -f`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) at this point, but it's not necessary since the pipeline will do that for us anyway. Also the image hasn't been uploaded to GCR yet either, so the GKE cluster deployment would probably fail. Furtunately enough, the Cloud Build pipeline will be tasked with and solve all of that.
 
-### Setting up Cloud Build
+### 4.3 Setting up Cloud Build
 
-#### Writing the build steps
+#### 4.3.1 Writing the build steps
 
 Once that’s done, we can move on to Cloud Build. Cloud Build is one of the essential services for building CI/CD pipelines within GCP. It is a continuous build, test, and deploy pipeline service managed by Google, similar to Bitbucket or GitLab pipelines. Cloud Build parses a file in `YAML` syntax called `cloudbuild.yaml`, analogous to the `bitbucket-pipelines.yml` file in Bitbucket or `gitlab-ci.yml` in GitLab, albeit with Google’s own distinctions and variations. Cloud Build offers 120 minutes of free build time in GCP and it’s well integrated with the rest of GCP’s products that we’re going to use so it will serve as well for the purpose of the demo.
 
@@ -248,7 +248,7 @@ gcloud projects add-iam-policy-binding [PROJECT-ID] \
 
 Where `[PROJECT-ID]` is the ID of the project and `[PROJECT_NUMBER]` is the project number. 
 
-#### Connecting GitHub to GCP
+#### 4.3.2 Connecting GitHub to GCP
 
 Now we are ready to connect the dots. We are going to add a build trigger to initiate our pipeline. First of all, we need to connect this GitHub repository to Cloud Build.
 
@@ -284,7 +284,7 @@ If all steps were done correctly, we should at least see a connected repository 
   <img src="https://snipboard.io/6xnVc4.jpg">
 </p>
 
-#### Creating the Cloud Build trigger
+#### 4.3.3 Creating the Cloud Build trigger
 
 We’re almost there, all that’s left is creating Cloud Build the trigger. The [`gcloud builds`](https://cloud.google.com/sdk/gcloud/reference/beta/builds) command is currently in Beta, but that shouldn’t be an problem, I’ve used `gcloud beta` commands multiple times and I can’t recall I had a single issue. 
 
@@ -306,7 +306,7 @@ And finally we’re ready. If all went well, the final product should look simil
   <img src="https://snipboard.io/YfRBSI.jpg">
 </p>
 
-## 6 Testing the configuration
+## 5 Testing the configuration
 
 Getting to the gist of the demo, we can now either go ahead and click that `Run trigger` button to test it out, or what’s more fun is to trigger it with a `git push` and see magic happen, since this is also, what we intended from the beggining.
 
@@ -316,7 +316,7 @@ If the build ran successfully, navigating to the `History` tab we should see a g
 
 ![Build](https://snipboard.io/6O1yRY.jpg)
 
-### View the built image
+### 5.1 View the built image
 
 To verify that the image has been built and uploaded to Google Container Registry, you can either navigate to GCR from the Cloud Console or run `gcloud container images list --repository=gcr.io/[PROJECT-ID]`. Either way, checking GCR the image should be visible:
 
@@ -324,7 +324,7 @@ To verify that the image has been built and uploaded to Google Container Registr
 
 Further clicking on the image, we will see any other versions of it that have been uploaded along with additional information such as the tags or the creation dates.
 
-### Observe the results
+### 5.2 Observe the results
 
 Obtain the GKE cluster’s Service IP by running:
 
@@ -337,7 +337,6 @@ Using your browser of choice navigate to GKE cluster’s exposed IP on port `80`
   <img src="https://snipboard.io/ALmJwC.jpg">
 </p>
 
-## 7 Summing up
+## 6 Summing up
 
-Thank you for stopping by and having a look. This was a very simple example of the use of Google Cloud Build, Google Container Registry and Google Kubernetes Engine to create a CI/CD pipeline. This was one of the most detailed guides I’ve written (the writing took me longer than the coding) even though I’ve omitted a lot of information. It might even be a good candidate for my first Medium article, but we’ll see. Have a good day!
-
+Thank you for stopping by and having a look. This was a very simple example of the use of Google Cloud Build, Google Container Registry and Google Kubernetes Engine to create a CI/CD pipeline. This was one of the most detailed guides I've written (the writing took me longer than the coding) even though I've omitted a lot of information, and also my first Medium post! I hope I was of help to someone. Don't hesitate in asking me if you have any doubts. Have a good day!
