@@ -1,4 +1,4 @@
-# hellovue
+# my-app-vue
 
 ## Project setup
 ```
