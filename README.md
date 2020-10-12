@@ -14,7 +14,7 @@ This is a simple demo on the usage of Google's [Cloud Build](https://cloud.googl
   <img src="https://snipboard.io/ef8aE6.jpg">
 </p>
 
-1. A developer pushes the source code to GitHub, which lends itself as the Software Version Control.
+1. A developer pushes the source code to GitHub, which lends itself as the Version Control System.
 2. GitHub triggers a post-commit hook to Cloud Build.
 3. Cloud Build creates the container image and pushes it to Container Registry.
 4. Cloud Build notifies Google Kubernetes Engine to roll out a new deployment.
@@ -28,9 +28,9 @@ Before we begin, some obvious things to note are that you will need to replace m
 
 I’ll also spare you the pain of having to look and poke around at a GUI and thus use the command-line interface as much as possible to achieve what we’re after — after all, I do advocate for avoiding unnecessary clicks and automation. The [`gcloud`](https://cloud.google.com/sdk/gcloud/reference) CLI will serve us well here.
 
-Let’s start off by tackling the non-cloud related tools. Back in the day, I decided to build myself a portfolio website and after some research, I chose Vue.js as the framework and I wasn’t disappointed. I was quite impressed by how simple, user-friendly and quick to set up it was. A few years ago all I heard about was PHP, Javascript and .NET in web development. Therefore I’ll use Vue.js as the web/application framework.
+Let’s start off by tackling the non-cloud related tools. Back in the day, I decided to build myself a portfolio website and after some research, I chose Vue.js as the framework and I wasn’t disappointed. I was quite impressed by how simple, user-friendly and quick to set up it was. A few years ago all I heard about was PHP, Javascript and .NET in web development. Therefore I’ll use Vue.js as the web/application framework. But enough small talk.
 
-But enough small talk. Open up a Terminal in your Linux distro and run these commands:
+Open up a Terminal in your Linux distro and run these commands:
 
 1. `sudo npm install -g @vue/cli` to install `vue`.
 2. `sudo vue create my-app-vue` to create a preset website in Vue.js. You might get prompted to select a Vue version, I will use `Vue 2`.
