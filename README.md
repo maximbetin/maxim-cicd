@@ -79,7 +79,7 @@ Every `Dockerfile` command serves a function, I’m not going to explain how eve
 In order to test that application is built and the containerized web application functions correctly run:
 
 1. `docker build -t gcr.io/[PROJECT_ID]/my-app-vue:latest .` to generate the image, tag it and upload it to Google Container Registry.
-2. `docker run -p 80:8080 gcr.io/[PROJECT_ID]/my-app-vue:latest` to run a container on port `80`.
+2. `docker run -p 80:8080 gcr.io/[PROJECT_ID]/my-app-vue:latest` to run a container on port `8080`.
 3. Navigate to http://localhost:80 in your browser and you should see the website running:
 
 <p align="center">
